@@ -19,7 +19,7 @@ public class MainFrame extends JFrame{
          this.setTitle("Car game");
          this.setLocation(500, 200);
          this.setSize(900, 500);
-         //this.setResizable(false);
+         this.setResizable(false);
          this.setVisible(true);
          this.setDefaultCloseOperation(EXIT_ON_CLOSE);
          p.setBackground(new Color(51, 153, 255));

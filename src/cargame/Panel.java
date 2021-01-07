@@ -15,7 +15,7 @@ import javax.swing.*;
  */
 public class Panel extends JPanel implements ActionListener, KeyListener {
 
-    int a, b = 20, c = 0;
+    int a=100, b = 20, c = 0;
     Timer t = new Timer(5, this);
 
     public Panel() {
@@ -46,18 +46,29 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
             g.fill3DRect(j, 270, 90, 30, true);
         }
         //draw buildings
-        for (a = 30; a < this.getWidth(); a += 120) {
+        for (int i = 30; i < this.getWidth(); i += 120) {
             g.setColor(new Color(228, 228, 161));
-            g.fill3DRect(a, 100, 100, 150, true);
+            g.fill3DRect(i, 100, 100, 150, true);
             g.setColor(Color.white);
-            g.fill3DRect(a + 10, 110, 30, 30, true);
-            g.fill3DRect(a + 60, 110, 30, 30, true);
-            g.fill3DRect(a + 10, 150, 30, 30, true);
-            g.fill3DRect(a + 60, 150, 30, 30, true);
-            g.fill3DRect(a + 30, 200, 40, 50, true);
+            g.fill3DRect(i + 10, 110, 30, 30, true);
+            g.fill3DRect(i + 60, 110, 30, 30, true);
+            g.fill3DRect(i + 10, 150, 30, 30, true);
+            g.fill3DRect(i + 60, 150, 30, 30, true);
+            g.fill3DRect(i + 30, 200, 40, 50, true);
         }
-
-        //draw car
+        //draw cars in street
+        g.setColor(Color.blue);
+        g.fill3DRect(a, 310, 200, 50, true);
+        g.setColor(Color.black);
+        g.fillOval(a + 10, 350, 50, 50);
+        g.fillOval(a + 140, 350, 50, 50);
+        g.setColor(Color.white);
+        g.fillOval(a + 30, 370, 10, 10);
+        g.fillOval(a + 160, 370, 10, 10);
+        g.setColor(Color.CYAN);
+        g.fill3DRect(a + 30, 270, 70, 40, true);
+        g.fill3DRect(a + 100, 270, 70, 40, true);
+        //draw car to move
         g.setColor(Color.red);
         g.fill3DRect(b, 360, 200, 50, true);
         g.setColor(Color.black);
@@ -73,9 +84,13 @@ public class Panel extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (a > this.getWidth() - 200) {
+            a = 30;
+        }
         if (b < 20 || b > this.getWidth() - 200) {
             b = 20;
         }
+        a+=((int)Math.random()+1)*3;
         repaint();
     }
 
